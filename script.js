@@ -1,36 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('nav');
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
 
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
 
-  const typingElement = document.getElementById('typing');
-  const words = ["Physicist", "Computer Scientist", "Web Developer", "Researcher"];
-  let wordIndex = 0;
-  let letterIndex = 0;
-  let currentWord = words[wordIndex];
-  let isDeleting = false;
 
-  function type() {
-    const displayText = isDeleting
-      ? currentWord.substring(0, letterIndex--)
-      : currentWord.substring(0, letterIndex++);
+    const typingElement = document.getElementById('typing');
+    const words = ["Web Developer", "Developer", "Web Designer", "Mobile Developer", "Computer Scientist"];
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let currentWord = '';
+    let currentLetters = '';
+    let isDeleting = false;
+    function type() {
+        if (isDeleting) {
+            currentLetters = currentWord.substring(0, letterIndex - 1);
+            letterIndex--;
+        } else {
+            currentLetters = currentWord.substring(0, letterIndex + 1);
+            letterIndex++;
+        }
 
-    typingElement.innerHTML = displayText;
+        typingElement.innerHTML = currentLetters;
 
-    if (!isDeleting && letterIndex === currentWord.length) {
-      isDeleting = true;
-      setTimeout(type, 2000);
-    } else if (isDeleting && letterIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      currentWord = words[wordIndex];
+        let typeSpeed = 200;
+        if (isDeleting) {
+            typeSpeed /= 2;
+        }
+
+        if (!isDeleting && letterIndex === currentWord.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && letterIndex === 0) {
+            isDeleting = false;
+            wordIndex++;
+            if (wordIndex === words.length) {
+                wordIndex = 0;
+            }
+            currentWord = words[wordIndex];
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
     }
-
-    setTimeout(type, isDeleting ? 100 : 150);
-  }
-
-  type();
+    currentWord = words[wordIndex];
+    type();
 });
