@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "Computer Scientist"
   ];
   
-  
+
   let wordIndex = 0;
   let letterIndex = 0;
   let isDeleting = false;
@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(type, typeSpeed);
   }
+
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("change", () => {
+    document.body.classList.toggle("light");
+  });
+
 
   type();
 });

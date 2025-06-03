@@ -37,23 +37,6 @@ header {
     z-index: 100;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .logo {
     font-size: 3rem;
     color: #b74b4b;
@@ -87,19 +70,6 @@ nav a.active {
     color: #b74b4b;
     border-bottom: 3px solid #b74b4b;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media(max-width:995px) {
     .hamburger {
@@ -138,21 +108,6 @@ nav a.active {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 section {
     min-height: 100vh;
     padding: 5rem 9% 5rem;
@@ -190,27 +145,6 @@ span {
     border-radius: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .home-img img {
     position: relative;
     width: 32vw;
@@ -247,23 +181,6 @@ span {
     box-shadow: 0 0 25px #b74b4b;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .btn {
     display: inline-block;
     padding: 1rem 2.8rem;
@@ -285,23 +202,88 @@ span {
     box-shadow: 0 0 25px #b74b4b;
 }
 
+/* Light theme */
+body.light {
+  background-color: white;
+  color: black;
+}
 
+body.light header {
+  background-color: #f4f4f4;
+}
 
+body.light nav a {
+  color: black;
+}
 
+body.light nav a:hover,
+body.light nav a.active {
+  color: #b74b4b;
+}
 
+body.light .btn {
+  background-color: white;
+  color: #b74b4b;
+  border-color: #b74b4b;
+}
 
+body.light .btn:hover {
+  background-color: #b74b4b;
+  color: white;
+}
 
+/* Toggle Switch */
+.toggle-container {
+  position: absolute;
+  right: 90px;
+}
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
 
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
 
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; width: 20px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
 
+input:checked + .slider {
+  background-color: #b74b4b;
+}
 
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
 
-
-
-
-
+.button-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
 
 @media (max-width: 1000px) {
